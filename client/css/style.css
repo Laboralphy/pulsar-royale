@@ -1,0 +1,193 @@
+/**********************
+        Général
+***********************/
+body {
+    background: #f1f1f1;
+}
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+#AjaxInProgress {
+	display:none;
+    position: fixed;
+    z-index: 9999;
+}
+#AjaxInProgress .lean-overlay {
+	display: block;
+	opacity: 0.5;
+}
+#AjaxInProgress .valign-wrapper {
+    left: 50%;
+    top: 35%;
+    margin-left: -150px;
+    position: fixed;
+    z-index: 1000;
+    width: 300px;
+}
+#AjaxInProgress h5 {
+	padding: 0 10px 0 10px;
+
+}
+#main {
+    width: calc(100vh / 1.5);
+    min-width: 344px;
+    height: 99vh;
+    margin: auto;
+    border: 1px solid #1a237e;
+}
+#main .view {
+    height : calc(99vh - 64px);
+}
+
+/************************
+    Material
+**************************/
+#main .tabs {
+    background: none;
+    height: 64px;
+}
+#main .tabs li {
+    height: 64px;
+}
+#main .tabs li .material-icons {
+    font-size: 2.5rem;
+    height: 64px;
+    line-height: 64px;
+}
+/************************
+    Material hamburger
+*************************/
+
+a.material-design-hamburger__icon {
+    display: none;
+    height:64px;
+}
+
+.right-aligned a.material-design-hamburger__icon {
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+.material-design-hamburger__icon {
+    padding: 2rem 1rem;
+    cursor: pointer;
+}
+
+.material-design-hamburger__layer {
+  display: block;
+  width: 42px;
+  height: 5px;
+  background: #eee;
+  position: relative;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+
+.material-design-hamburger__layer:before, .material-design-hamburger__layer:after {
+  display: block;
+  width: inherit;
+  height: 5px;
+  position: absolute;
+  background: inherit;
+  left: 0;
+  content: '';
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+
+.material-design-hamburger__layer:before {
+  bottom: 175%;
+}
+
+.material-design-hamburger__layer:after {
+  top: 175%;
+}
+
+.material-design-hamburger__icon--to-arrow {
+  animation-name: material-design-hamburger__icon--slide;
+  animation-fill-mode: forwards;
+}
+
+.material-design-hamburger__icon--to-arrow:before {
+  animation-name: material-design-hamburger__icon--slide-before;
+  animation-fill-mode: forwards;
+}
+
+.material-design-hamburger__icon--to-arrow:after {
+  animation-name: material-design-hamburger__icon--slide-after;
+  animation-fill-mode: forwards;
+}
+
+.material-design-hamburger__icon--from-arrow {
+  animation-name: material-design-hamburger__icon--slide-from;
+}
+
+.material-design-hamburger__icon--from-arrow:before {
+  animation-name: material-design-hamburger__icon--slide-before-from;
+}
+
+.material-design-hamburger__icon--from-arrow:after {
+  animation-name: material-design-hamburger__icon--slide-after-from;
+}
+
+@keyframes material-design-hamburger__icon--slide {
+  0% {
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes material-design-hamburger__icon--slide-before {
+  0% {
+  }
+  100% {
+    transform: rotate(45deg);
+    margin: 3% 37%;
+    width: 75%;
+  }
+}
+
+@keyframes material-design-hamburger__icon--slide-after {
+  0% {
+  }
+  100% {
+    transform: rotate(-45deg);
+    margin: 3% 37%;
+    width: 75%;
+  }
+}
+
+@keyframes material-design-hamburger__icon--slide-from {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+  }
+}
+
+@keyframes material-design-hamburger__icon--slide-before-from {
+  0% {
+    transform: rotate(45deg);
+    margin: 3% 37%;
+    width: 75%;
+  }
+  100% {
+  }
+}
+
+@keyframes material-design-hamburger__icon--slide-after-from {
+  0% {
+    transform: rotate(-45deg);
+    margin: 3% 37%;
+    width: 75%;
+  }
+  100% {
+  }
+}
