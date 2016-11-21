@@ -51,12 +51,21 @@
             return this;
         },
         listing : function() {
+            var that = this;
             $('<h3>Cartes disponibles</h3>').appendTo(this.$content);
             for (var k in psr.config.cards) {
-                var card = new psr.view.cards.Card(k);
-                this.$content.append(card.$card);
+                this._createCard(k);
             }
             return this;
+        },
+        _createCard : function(k) {
+            var that = this;
+            var card = new psr.view.cards.Card(k);
+            this.$content.append($('<div class="col s3">').append(card.$card));
+            card.$card.on('dragstart', function(e) {
+                e.originalEvent.dataTransfer.setData('text', '');
+                that.current.draggedCard = card;
+            });
         }
     });
 })(jQuery,O2);

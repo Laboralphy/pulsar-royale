@@ -9,6 +9,8 @@
         $tab : null,
         $tabContent : null,
 
+        draggedCard : null,
+
         __construct: function (deck) {
             this._deck = [];
             decks.push(this);
@@ -30,9 +32,22 @@
             return this;
         },
         makeTabContent: function() {
+            var that = this;
             this.$tabContent = $('<div id="deck'+ this.deckId +'" class="row psrDeck">');
             for (var i = 0; i < 8; i++) {
-                $('<div class="col s3"><div class="dropZone"></div></div>').appendTo(this.$tabContent);
+                var $dropZone = $('<div class="dropZone" data-placement="'+i+'"></div>');
+                $('<div class="col s3"></div>').append($dropZone).appendTo(this.$tabContent);
+                $dropZone
+                    .on('dragover', function(e) {
+                        e.preventDefault();
+                    })
+                    .on('drop', function(e) {
+                        var $this = $(this);
+                        e.originalEvent.preventDefault();
+                        $this.html(that.draggedCard.$card.clone());
+                        that._deck[$this.data('placement')] = that.draggedCard.cardInfo['cardName'];
+                        console.log(that._deck)
+                    });
             }
             return this;
         }
