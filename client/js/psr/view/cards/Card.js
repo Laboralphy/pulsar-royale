@@ -11,7 +11,7 @@
         },
         cardInfo : null,
         __construct : function(cardId) {
-            this.cardInfo = psr.config.cards[cardId] || _defaultCard;
+            this.cardInfo = psr.config.cards[cardId] || this._defaultCard;
             this.cardInfo.cardName = cardId || null;
             this.initCard();
         },
