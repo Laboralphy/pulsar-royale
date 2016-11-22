@@ -21,6 +21,7 @@
             this.listing();
         },
         loadDecks : function() {
+            that = this;
             this.decks = [];
             this.$decks = [];
             var decks = window.localStorage.getItem('decks');
@@ -41,7 +42,7 @@
             }
             this.$tabWrapper.tabs({
                 onShow: function() {
-                    this.current = decks[($(this).data('deckid') - 1)];
+                    this.current = that.decks[($(this).data('deckid') - 1)];
                 }
             });
             var curDeck = window.localStorage.getItem('curDeck');
@@ -62,10 +63,14 @@
             var that = this;
             var card = new psr.view.cards.Card(k);
             this.$content.append($('<div class="col s3">').append(card.$card));
-            card.$card.on('dragstart', function(e) {
-                e.originalEvent.dataTransfer.setData('text', '');
-                that.current.draggedCard = card;
-            });
+            card.$card
+                .on('dragstart', function(e) {
+                    e.originalEvent.dataTransfer.setData('text', '');
+                    that.current.draggedCard = card;
+                });
+        },
+        _filter : function() {
+
         }
     });
 })(jQuery,O2);

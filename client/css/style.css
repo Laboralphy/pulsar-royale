@@ -45,7 +45,7 @@ body {
 
 /****** Cards *********/
 .psrDeck {
-    background: #666D;
+    background: rgba(102, 102, 102, 0.86);
     padding: 5px 0;
     border-radius: 0 0 10px 10px;
 }

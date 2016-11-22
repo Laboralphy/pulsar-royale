@@ -39,14 +39,24 @@
                 $('<div class="col s3"></div>').append($dropZone).appendTo(this.$tabContent);
                 $dropZone
                     .on('dragover', function(e) {
+                        var $this = $(this);
                         e.preventDefault();
+                        $this.css('opacity','0.5');
+                    })
+                    .on('dragexit dragleave drop dragend', function() {
+                        var $this = $(this);
+                        $this.css('opacity','');
                     })
                     .on('drop', function(e) {
                         var $this = $(this);
                         e.originalEvent.preventDefault();
-                        $this.html(that.draggedCard.$card.clone());
-                        that._deck[$this.data('placement')] = that.draggedCard.cardInfo['cardName'];
-                        console.log(that._deck)
+                        var cardName = that.draggedCard.cardInfo['cardName'];
+                        if (that._deck.indexOf(cardName) == -1) {
+                            $this.html(that.draggedCard.$card.clone());
+                            that._deck[$this.data('placement')] = that.draggedCard.cardInfo['cardName'];
+                        } else {
+                            Materialize.toast('Cette carte est déjà dans le deck...', 3000);
+                        }
                     });
             }
             return this;

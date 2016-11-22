@@ -21,6 +21,7 @@
             this.$content = $('<div class="content">').appendTo(this.$view);
 
             this.$tab = $('<li class="tab col s3 tooltipped" data-position="top" data-tooltip="'+ this.tabTooltip +'"><a href="#'+ this.tabName +'"><i class="material-icons" >'+ this.icon +'</i></a></li>').appendTo($tabsWrapper);
+            this.$tab.tooltip();
         }
 
     });

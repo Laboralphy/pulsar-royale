@@ -8,7 +8,9 @@ module.exports = function(grunt) {
                     {expand:true, cwd: 'client/css/', src: ['**'], dest : "www/client/css/"},
                     {expand:true, cwd: 'client/font/', src: ['**'], dest : "www/client/font/"},
                     {expand:true, cwd: 'client/fonts/', src: ['**'], dest : "www/client/fonts/"},
-                    {expand:true, cwd: 'client/js/', src: ['*jquery*','material*','o2'], dest : "www/client/js/"}
+                    {expand:true, cwd: 'client/img/', src: ['**'], dest : "www/client/img/"},
+                    {expand:true, cwd: 'client/svg/', src: ['**'], dest : "www/client/svg/"},
+                    {expand:true, cwd: 'client/js/', src: ['*jquery*','material*','o2*'], dest : "www/client/js/"}
                 ]
             }
         },
