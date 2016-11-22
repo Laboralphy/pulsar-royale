@@ -10,7 +10,9 @@ module.exports = function(grunt) {
                     {expand:true, cwd: 'client/fonts/', src: ['**'], dest : "www/client/fonts/"},
                     {expand:true, cwd: 'client/img/', src: ['**'], dest : "www/client/img/"},
                     {expand:true, cwd: 'client/svg/', src: ['**'], dest : "www/client/svg/"},
-                    {expand:true, cwd: 'client/js/', src: ['*jquery*','material*','o2*'], dest : "www/client/js/"}
+                    {expand:true, cwd: 'client/js/', src: ['*jquery*','material*','o2*'], dest : "www/client/js/"},
+                    {expand:true, cwd: 'client/', src: ['index.html'], dest : "www/client/"}
+
                 ]
             }
         },
@@ -56,7 +58,7 @@ module.exports = function(grunt) {
                 src: [
                     "client/js/psr/**",
                 ],
-                dest: 'client/js/psr.js'
+                dest: 'www/client/js/psr.js'
             }
         },
         // Uglify
