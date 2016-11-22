@@ -19,7 +19,7 @@
             this.makeTabContent();
         },
         makeTab: function() {
-            this.$tab = $('<li class="tab col s3"><a href="#deck'+ this.deckid +'" data-deckId="'+ this.deckId +'">'+ this.deckId +'</a></li>');
+            this.$tab = $('<li class="tab col s3"><a href="#deck'+ this.deckId +'" data-deckid="'+ this.deckId +'">'+ this.deckId +'</a></li>');
             return this;
         },
         makeTabContent: function() {

@@ -11,6 +11,7 @@
 
         $tabWrapper : null,
         __construct : function() {
+            var that = this;
             this.tabName = 'cards';
             this.title = 'Vos cartes';
             this.icon = '&#xE8F0;';
@@ -18,6 +19,11 @@
             __inherited();
 
             this.cards = [];
+            $('<a class="btn-floating btn-large waves-effect waves-light cyan right"><i class="material-icons">add</i></a>')
+                .appendTo(this.$content)
+                .on('click', function() {
+                    that._createDeck();
+                });
             this.$tabWrapper = $('<ul class="tabs tabs-fixed-width black">').appendTo(this.$content);
             this.loadDecks();
             this.listing();
@@ -36,12 +42,12 @@
             }
             this.$tabWrapper.tabs({
                 onShow: function() {
-                    that._setCurDeck(($(this).data('deckid') - 1));
+                    that._setCurDeck($(this).data('deckid'))._filter();
                 }
             });
             var curDeck = window.localStorage.getItem('curDeck');
             if (curDeck && this.decks[curDeck]) {
-                this.$tabWrapper.tabs('select_tab', this.decks[curDeck].$tab.attr('id'));
+                this.$tabWrapper.tabs('select_tab', this.decks[curDeck].$tabContent.attr('id'));
             }
             return this;
         },
@@ -68,14 +74,20 @@
         },
         _createDeck : function(deck) {
             var that = this;
+            if (that.decks.length >= 12) {
+                Materialize.toast('Le système est limité à 12 decks', 3000);
+                return false;
+            }
             var deck = new psr.view.cards.Deck(deck);
             this.decks.push(deck);
             deck.$tab.appendTo(this.$tabWrapper);
-            deck.$tabContent.appendTo(this.$content);
+            this.$tabWrapper.after(deck.$tabContent);
             deck.on('changed', function() {
                 that._filter()._save();
             });
             this.curDeck = deck;
+            this.$tabWrapper.find('.indicator').remove();
+            this.$tabWrapper.tabs();
             return deck;
         },
         _filter : function() {
@@ -98,8 +110,9 @@
             return this;
         },
         _setCurDeck : function(idDeck) {
-            window.localStorage.setItem('curDeck',idDeck);
-            this.curDeck = this.decks[idDeck];
+            window.localStorage.setItem('curDeck',(idDeck  - 1));
+            this.curDeck = this.decks[(idDeck  - 1)];
+            return this;
         }
     });
 })(jQuery,O2);

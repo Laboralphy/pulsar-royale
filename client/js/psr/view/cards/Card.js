@@ -17,6 +17,8 @@
         },
         initCard : function() {
             this.$card = $('<div class="psrCard '+ this.cardInfo['rrt'] +'" draggable="true" data-tooltip="'+ this.cardInfo['lbl'] +'"><img draggable="false" src="'+ this.cardInfo['crd'] +'" width="100%"></div>');
+            var $cardCoast = $('<div class="coast" data-coast="'+ this.cardInfo['cst'] +'" ><img src="svg/lightning.svg" /></div>')
+            this.$card.append($cardCoast);
             $('[data-tooltip]', this.$card).tooltip();
             return this;
         }
