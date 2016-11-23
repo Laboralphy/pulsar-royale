@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "pulsar-royale",
+=======
+  "name": "Pulsar-Royale",
+>>>>>>> client
   "version": "1.0.0",
   "description": "Pulsar-Royale",
   "main": "index.html",
@@ -43,9 +47,16 @@
   "keywords": [
     "Pulsar",
     "Royale",
+<<<<<<< HEAD
     "Carte",
     "Deck"
   ],
   "author": "Team Puls@rRoyale",
+=======
+    "Cartes",
+    "Desck"
+  ],
+  "author": "Team Puls@r",
+>>>>>>> client
   "license": "MIT"
 }

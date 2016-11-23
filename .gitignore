@@ -3,3 +3,6 @@
 /.grunt/
 /_SpecRunner.html
 /client/js/psr.js
+/www/
+/logs/
+**.log

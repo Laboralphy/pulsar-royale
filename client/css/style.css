@@ -270,3 +270,25 @@ a.material-design-hamburger__icon {
   100% {
   }
 }
+.chat {
+    position: relative;
+    height: calc(99vh - 64px);
+}
+.chat-bulle {
+    background-color: black;
+    color: white;
+    border-radius: 0.4em;
+    padding: 0.1em 1.2em;
+}
+.chat-txt {
+}
+.chat-input {
+    /*border-radius: 0.4em;*/
+    color: white;
+    /*padding: 0.1em 1.2em;*/
+    background-color: black;
+    position: absolute;
+    bottom: 0px;
+    /*width: calc(100% - 2.4em);*/
+    /*width: 100%;*/
+}

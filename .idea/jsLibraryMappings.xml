@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{pulsar-royale/node_modules}" />
+    <file url="file://$PROJECT_DIR$/www/libraries/mocha" libraries="{pulsar-royale/www/libraries/mocha/node_modules}" />
+    <includedPredefinedLibrary name="ECMAScript 6" />
+  </component>
+</project>
