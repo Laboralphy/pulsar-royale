@@ -83,6 +83,23 @@ body {
 .psrCard.legendaire {
     box-shadow: 2px 0 2px green, -2px 0 2px green, 0 2px 2px green, 0 -2px 2px green;
 }
+.psrCard .coast {
+    position: absolute;
+    top: -5%;
+    left: -10%;
+    width: 35%;
+}
+.psrCard .coast::after {
+    content: attr(data-coast);
+    position: absolute;
+    left: -0.1rem;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    font-size: 2rem;
+    text-align: center;
+}
 /************************
     Material
 **************************/
