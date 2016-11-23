@@ -10,6 +10,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'url',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -32,6 +34,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/flutiste.svg',    // Url de l'image de la carte
         rrt : 'epique', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -53,6 +57,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -74,6 +80,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -95,6 +103,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'legendaire', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -116,6 +126,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -137,6 +149,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -158,6 +172,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -179,6 +195,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'epique', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -200,6 +218,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -221,6 +241,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)
@@ -242,6 +264,8 @@ O2.createObject("psr.config.cards", {
         tpl : 'url',    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
+        cst : 5, // cout de la carte
+        dsc : 'Une description', // Description de la carte
 
         // caract Physiques
         lyr : 0, // Layer de progression de l'unité (-1 : ssol, 0 : sol, 1: air)

@@ -4,7 +4,7 @@
 (function ($, O2) {
     var decks = [];
     O2.createClass("psr.view.cards.Deck", {
-        _deck : null,
+        deck : null,
 
         $tab : null,
         $tabContent : null,
@@ -12,23 +12,14 @@
         draggedCard : null,
 
         __construct: function (deck) {
-            this._deck = [];
+            this.deck = deck || [];
             decks.push(this);
             this.deckId = decks.length;
-            if (deck) {
-                this.setDeck(deck);
-            }
             this.makeTab();
             this.makeTabContent();
         },
-        setDeck: function(deck) {
-            for (var c in deck) {
-                this._deck.push(new psr.view.cards.Card(deck[c]));
-            }
-            return this;
-        },
         makeTab: function() {
-            this.$tab = $('<li class="tab col s3"><a href="#deck'+ this.deckid +'" data-deckId="'+ this.deckId +'">'+ this.deckId +'</a></li>');
+            this.$tab = $('<li class="tab col s3"><a href="#deck'+ this.deckId +'" data-deckid="'+ this.deckId +'">'+ this.deckId +'</a></li>');
             return this;
         },
         makeTabContent: function() {
@@ -37,6 +28,9 @@
             for (var i = 0; i < 8; i++) {
                 var $dropZone = $('<div class="dropZone" data-placement="'+i+'"></div>');
                 $('<div class="col s3"></div>').append($dropZone).appendTo(this.$tabContent);
+                if (this.deck[i]) {
+                    new psr.view.cards.Card(this.deck[i]).$card.appendTo($dropZone);
+                }
                 $dropZone
                     .on('dragover', function(e) {
                         var $this = $(this);
@@ -51,9 +45,10 @@
                         var $this = $(this);
                         e.originalEvent.preventDefault();
                         var cardName = that.draggedCard.cardInfo['cardName'];
-                        if (that._deck.indexOf(cardName) == -1) {
+                        if (that.deck.indexOf(cardName) == -1) {
                             $this.html(that.draggedCard.$card.clone());
-                            that._deck[$this.data('placement')] = that.draggedCard.cardInfo['cardName'];
+                            that.deck[$this.data('placement')] = that.draggedCard.cardInfo['cardName'];
+                            that.trigger('changed');
                         } else {
                             Materialize.toast('Cette carte est déjà dans le deck...', 3000);
                         }
@@ -62,4 +57,5 @@
             return this;
         }
     });
+    O2.mixin(psr.view.cards.Deck, O876.Mixin.Events);
 })(jQuery, O2);
