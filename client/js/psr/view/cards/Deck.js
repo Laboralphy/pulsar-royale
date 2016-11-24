@@ -29,7 +29,10 @@
                 var $dropZone = $('<div class="dropZone" data-placement="'+i+'"></div>');
                 $('<div class="col s3"></div>').append($dropZone).appendTo(this.$tabContent);
                 if (this.deck[i]) {
-                    new psr.view.cards.Card(this.deck[i]).$card.appendTo($dropZone);
+                    var card = new psr.view.cards.Card(this.deck[i]);
+                    card.$card
+                        .appendTo($dropZone)
+                        .on('click', card.showDescription.bind(card));;
                 }
                 $dropZone
                     .on('dragover', function(e) {
@@ -46,7 +49,12 @@
                         e.originalEvent.preventDefault();
                         var cardName = that.draggedCard.cardInfo['cardName'];
                         if (that.deck.indexOf(cardName) == -1) {
-                            $this.html(that.draggedCard.$card.clone());
+                            var dropped = that.draggedCard;
+                            var $clone = dropped.$card.clone();
+                            $clone.on('click',function() {
+                                dropped.$card.click();
+                            });
+                            $this.html($clone);
                             that.deck[$this.data('placement')] = that.draggedCard.cardInfo['cardName'];
                             that.trigger('changed');
                         } else {

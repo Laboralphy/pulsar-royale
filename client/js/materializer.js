@@ -211,7 +211,7 @@ var Materializer = (function($) {
         $('.modal-footer a', $modal).on('click', function(e) {
             e.preventDefault();
         });
-        $modal.openModal();
+        $modal.modal('open');
     }
     var curModal = 0;
     function createModal(options) {
@@ -249,7 +249,7 @@ var Materializer = (function($) {
         $modalContent.append($modalContentHeader, $modalContentContent);
         $modal.append($modalContent, $modalFooter);
         $('body').append($modal);
-        $modal.openModal(settings);
+        $modal.modal(settings).modal('open');
         $modal.materializeLayout();
         return $modal;
     }
@@ -279,18 +279,18 @@ var Materializer = (function($) {
         $(this).each(function() {
             var $this = $(this);
             // transformation des select
-            $('select', $this).material_select();
-            $("button[type='submit']", $this).each(function() {
+            $this.find('select').material_select();
+            $this.find("button[type='submit']").each(function() {
                 if (!$(this).hasClass('btn')) {
                     $(this).append('<i class="material-icons right">send</i>');
                 }
             });
-            $("button", $this).each(function() {
+            $this.find("button").each(function() {
                 if (!$(this).hasClass('btn')) {
                     $(this).addClass('btn waves-effect waves-light');
                 }
             });
-            $('ul.tabs').tabs();
+            $this.find('ul.tabs').tabs();
         });
         return this;
     };

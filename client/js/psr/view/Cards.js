@@ -19,8 +19,8 @@
             __inherited();
 
             this.cards = [];
-            $('<a class="btn-floating btn-large waves-effect waves-light cyan right"><i class="material-icons">add</i></a>')
-                .appendTo(this.$content)
+            $('<a class="btn-floating waves-effect waves-light cyan right"><i class="material-icons">add</i></a>')
+                .appendTo(this.$title.find('h3'))
                 .on('click', function() {
                     that._createDeck();
                 });
@@ -69,7 +69,8 @@
                 .on('dragstart', function(e) {
                     e.originalEvent.dataTransfer.setData('text', '');
                     that.curDeck.draggedCard = card;
-                });
+                })
+                .on('click', card.showDescription.bind(card));
             return card;
         },
         _createDeck : function(deck) {
