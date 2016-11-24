@@ -20,7 +20,7 @@ O2.createClass('O876.Mixin.Prop', {
 		};
 		for (var i in p.prototype) {
 			if (i.match(/^_/)) {
-				if (typeof p.prototype[i] !== 'function') {
+				if (!(i.substr(1) in pProto) && typeof p.prototype[i] !== 'function') {
 					pProto[i.substr(1)] = this.buildPropFunction(i);
 				}
 			}

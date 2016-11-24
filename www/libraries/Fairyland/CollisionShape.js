@@ -1,7 +1,6 @@
 O2.createClass('Fairy.CollisionShape', {
-	_shape : null,
 	_flight : null,
-	_tangibility : 1, // 
+	_tangibility : 1,
 
 	// Pour savoir si l'objet A percute l'objet B on fait (A.nTangibilityMask &
 	// B.nTangibilityMask) si le résultat
@@ -57,6 +56,21 @@ O2.createClass('Fairy.CollisionShape', {
 	 */
 	nearer: function(v1, v2, d) {
 		return (d * d) > this.squareDistance(v1, v2);
+	},
+
+	/**
+	 * Renvoie true si le point spécifé est dans la forme
+	 */
+	inside: function(v) {
+		return false;
+	},
+
+	/**
+	 * Renvoie un tableau de points clé
+	 * Permettant de déterminer les collision
+	 */
+	points: function() {
+		return []
 	},
 
 	/**

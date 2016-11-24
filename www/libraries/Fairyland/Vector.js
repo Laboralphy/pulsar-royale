@@ -1,4 +1,4 @@
-O2.createClass('Fairy.Vector2D', {
+O2.createClass('Fairy.Vector', {
 	_x: 0,
 	_y: 0,
 	
@@ -53,4 +53,4 @@ O2.createClass('Fairy.Vector2D', {
 
 
 
-O2.mixin(Fairy.Vector2D, O876.Mixin.Prop);
+O2.mixin(Fairy.Vector, O876.Mixin.Prop);
