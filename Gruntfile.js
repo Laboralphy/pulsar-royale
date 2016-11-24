@@ -2,19 +2,7 @@ module.exports = function (grunt) {
 
     // Configuration de Grunt
     grunt.initConfig({
-<<<<<<< HEAD
-        copy : {
-            dist : {
-                files : [
-                    {expand:true, cwd: 'client/css/', src: ['**'], dest : "www/client/css/"},
-                    {expand:true, cwd: 'client/font/', src: ['**'], dest : "www/client/font/"},
-                    {expand:true, cwd: 'client/fonts/', src: ['**'], dest : "www/client/fonts/"},
-                    {expand:true, cwd: 'client/img/', src: ['**'], dest : "www/client/img/"},
-                    {expand:true, cwd: 'client/svg/', src: ['**'], dest : "www/client/svg/"},
-                    {expand:true, cwd: 'client/js/', src: ['*jquery*','material*','o2*'], dest : "www/client/js/"},
-                    {expand:true, cwd: 'client/', src: ['index.html'], dest : "www/client/"}
 
-=======
         copy: {
             dist: {
                 files: [
@@ -23,8 +11,8 @@ module.exports = function (grunt) {
                     {expand: true, cwd: 'client/fonts/', src: ['**'], dest: "www/client/fonts/"},
                     {expand: true, cwd: 'client/img/', src: ['**'], dest: "www/client/img/"},
                     {expand: true, cwd: 'client/svg/', src: ['**'], dest: "www/client/svg/"},
-                    {expand: true, cwd: 'client/js/', src: ['*jquery*', 'material*', 'o2*'], dest: "www/client/js/"}
->>>>>>> client
+                    {expand: true, cwd: 'client/js/', src: ['*jquery*', 'material*', 'o876/**'], dest: "www/client/js/"},
+                    {expand: true, cwd: 'client/', src: ['index.html'], dest: "www/client/"}
                 ]
             }
         },
@@ -69,6 +57,7 @@ module.exports = function (grunt) {
             },
             dev: {
                 src: [
+                    "client/js/psr/**/*Abstract.js",
                     "client/js/psr/**"
                 ],
                 dest: 'www/client/js/psr.js'
@@ -151,7 +140,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dev-server',
         [
             'copy:dist',
-            'concat:dist'
+            'concat:dev'
         ]
     );
     // Monitor pour la dev
@@ -159,4 +148,4 @@ module.exports = function (grunt) {
     grunt.registerTask('tests', ['jasmine']);
     grunt.registerTask('monitor-server', ["concurrent:monitor-server"]);
 
-}
+};
