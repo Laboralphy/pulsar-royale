@@ -21,7 +21,7 @@
             },
             "dps" : {
                 "label" : "DPS",
-                "value" : function() { return (this.cardInfo.dmg * this.cardInfo.asp); }
+                "value" : function() { return Math.floor(this.cardInfo.dmg * this.cardInfo.asp); }
             },
             "tgt" : {
                 "label" : "Cibles"
@@ -61,7 +61,7 @@
                     var val = this.cardInfo[cell] || desc['value'].bind(that)();
                     if (val) {
                         var $cell = $('<div class="col s6"><div class="col s2"><img src="img/'+ cell +'.png" /></div><div class="col s10"><div class="lbl">' + desc.label + '</div>' + val + '</div></div>').appendTo($stats);
-                        if (i % 2 == 0 && ((i - 1) % 3) != 0 || i % 3 == 0 && (i - 1) % 2 == 0) {
+                        if (i % 2 == 0 && i % 4 != 0 || ((i - 1) % 2) == 0 && ((i - 1) % 4) != 0) {
                             $cell.addClass('grey darken-3');
                         } else {
                             $cell.addClass('grey darken-4');

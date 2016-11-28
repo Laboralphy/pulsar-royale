@@ -63,6 +63,12 @@
                     });
             }
             return this;
+        },
+        validate : function() {
+            // @todo : vérification coté serveur
+            if (this.deck.length != 8) {
+                throw "Il n'y a pas assez de cartes dans ce deck";
+            }
         }
     });
     O2.mixin(psr.view.cards.Deck, O876.Mixin.Events);

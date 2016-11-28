@@ -19,11 +19,11 @@
             __inherited();
 
             this.cards = [];
-            $('<a class="btn-floating waves-effect waves-light cyan right"><i class="material-icons">add</i></a>')
-                .appendTo(this.$title.find('h3'))
-                .on('click', function() {
-                    that._createDeck();
-                });
+            // $('<a class="btn-floating waves-effect waves-light cyan right"><i class="material-icons">add</i></a>')
+            //     .appendTo(this.$title.find('h3'))
+            //     .on('click', function() {
+            //         that._createDeck();
+            //     });
             this.$tabWrapper = $('<ul class="tabs tabs-fixed-width black">').appendTo(this.$content);
             this.loadDecks();
             this.listing();
@@ -35,10 +35,11 @@
             if (decks) {
                 decks = JSON.parse(decks);
                 for (var d in decks) {
-                    this._createDeck(decks[d]);
+                    if (d < 5) that._createDeck(decks[d]);
                 }
-            } else {
-                that.curDeck = this._createDeck();
+            }
+            while(this.decks.length < 5) {
+                that._createDeck();
             }
             this.$tabWrapper.tabs({
                 onShow: function() {
@@ -48,6 +49,8 @@
             var curDeck = window.localStorage.getItem('curDeck');
             if (curDeck && this.decks[curDeck]) {
                 this.$tabWrapper.tabs('select_tab', this.decks[curDeck].$tabContent.attr('id'));
+            } else {
+                that.curDeck = that.decks[0];
             }
             return this;
         },
@@ -114,6 +117,9 @@
             window.localStorage.setItem('curDeck',(idDeck  - 1));
             this.curDeck = this.decks[(idDeck  - 1)];
             return this;
+        },
+        getCurDeck : function() {
+            return this.curDeck;
         }
     });
 })(jQuery,O2);

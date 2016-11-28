@@ -7,7 +7,7 @@ O2.createObject("psr.config.cards", {
      unite : { // nom technique de l'unité
         // caract d'affichage
         lbl : 'Unité',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'url',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
         cst : 5, // cout de la carte
@@ -34,7 +34,7 @@ O2.createObject("psr.config.cards", {
     marine : {
         // caract d'affichage
         lbl : 'Marine',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/marine.png',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
         cst : 3, // cout de la carte
@@ -57,7 +57,7 @@ O2.createObject("psr.config.cards", {
     ninja : {
         // caract d'affichage
         lbl : 'Ninja',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/ninja.png',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
         cst : 4, // cout de la carte
@@ -80,7 +80,7 @@ O2.createObject("psr.config.cards", {
     porte_fens : {
         // caract d'affichage
         lbl : 'Porte Fens',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/porte_fens.png',    // Url de l'image de la carte
         rrt : 'epique', // Rareté de la carte
         cst : 5, // cout de la carte
@@ -103,7 +103,7 @@ O2.createObject("psr.config.cards", {
     fen : {
         // caract d'affichage
         lbl : 'Fen',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/fen.png',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
         cst : 3, // cout de la carte
@@ -126,7 +126,7 @@ O2.createObject("psr.config.cards", {
     foreuse : {
         // caract d'affichage
         lbl : 'Foreuse',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/foreuse.png',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
         cst : 5, // cout de la carte
@@ -149,7 +149,7 @@ O2.createObject("psr.config.cards", {
     sniper : {
         // caract d'affichage
         lbl : 'Sniper',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/sniper.png',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
         cst : 4, // cout de la carte
@@ -173,7 +173,7 @@ O2.createObject("psr.config.cards", {
     photocanon : {
         // caract d'affichage
         lbl : 'Photo-canon',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/photocanon.png',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
         cst : 5, // cout de la carte
@@ -197,7 +197,7 @@ O2.createObject("psr.config.cards", {
     canon_laser : {
         // caract d'affichage
         lbl : 'Canon laser',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/canon_laser.png',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
         cst : 3, // cout de la carte
@@ -220,7 +220,7 @@ O2.createObject("psr.config.cards", {
     missile : {
         // caract d'affichage
         lbl : 'Missile',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'svg/missile.svg',    // Url de l'image de la carte
         rrt : 'rare', // Rareté de la carte
         cst : 5, // cout de la carte
@@ -241,7 +241,7 @@ O2.createObject("psr.config.cards", {
     iem : {
         // caract d'affichage
         lbl : 'I.E.M',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/iem.png',    // Url de l'image de la carte
         rrt : 'commune', // Rareté de la carte
         cst : 2, // cout de la carte
@@ -260,7 +260,7 @@ O2.createObject("psr.config.cards", {
     gravity_bomb : {
         // caract d'affichage
         lbl : 'Bombe gravitationnelle',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'img/gravity_bomb.png',    // Url de l'image de la carte
         rrt : 'epique', // Rareté de la carte
         cst : 3, // cout de la carte
@@ -282,7 +282,7 @@ O2.createObject("psr.config.cards", {
     flutiste : {
         // caract d'affichage
         lbl : 'Flutiste',  // Nom de l'unité
-        tpl : 'url',    // Url du template
+        tpl: "img/asp.png",    // Url du template
         crd : 'svg/flutiste.svg',    // Url de l'image de la carte
         rrt : 'legendaire', // Rareté de la carte
         cst : 5, // cout de la carte
