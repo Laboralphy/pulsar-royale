@@ -1,6 +1,9 @@
-O2.createClass('Fairy.CollisionShape', {
+O2.createClass('Fairy.Shape', {
 	_flight : null,
 	_tangibility : 1,
+
+	__construct: function() {
+	},
 
 	// Pour savoir si l'objet A percute l'objet B on fait (A.nTangibilityMask &
 	// B.nTangibilityMask) si le résultat
@@ -31,10 +34,10 @@ O2.createClass('Fairy.CollisionShape', {
 	 * @return float
 	 */
 	squareDistance : function(v1, v2) {
-		var x1 = v1.x();
-		var y1 = v1.y();
-		var x2 = v2.x();
-		var y2 = v2.y();
+		var x1 = v1.x;
+		var y1 = v1.y;
+		var x2 = v2.x;
+		var y2 = v2.y;
 		return ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
 	},
 
@@ -70,7 +73,7 @@ O2.createClass('Fairy.CollisionShape', {
 	 * Permettant de déterminer les collision
 	 */
 	points: function() {
-		return []
+		return [];
 	},
 
 	/**
@@ -78,12 +81,10 @@ O2.createClass('Fairy.CollisionShape', {
 	 * @param CollisionShape oShape
 	 * @return boolean
 	 */
-	hit: function(oShape) {
-		if ((oShape.tangibility() & this.tangibility()) === 0) {
-			return false;
-		}
+	hits: function(oShape) {
+		return (oShape.tangibility() & this.tangibility()) !== 0;
 	}
 });
 
 
-O2.mixin(Fairy.Vector2D, O876.Mixin.Prop);
+O2.mixin(Fairy.Shape, O876.Mixin.Prop);
