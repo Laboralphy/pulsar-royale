@@ -1,18 +1,12 @@
 (function($, O2) {
     var $main = $('#main');
     var $game = $('#game');
-    O2.createClass("psr.game.GameController", {
+    O2.createClass("psr.GameController", {
         deck    : null,
         focusedCard : null,
 
         $grid   : null,
         $tpl    : null,
-
-        $energy : null,
-
-        $socle  : null,
-        $next   : null,
-        $cards  : null,
 
         _gridHeight : 30,
         _gridWidth  : 18,
@@ -22,36 +16,28 @@
             this.$tpl = $('<div class="tplCard">');
             this._makeGrid();
             this._makeSocle();
+            this._makeTimer();
             this.show();
-            $main.css('background-image', "url(img/background-royale.png)");
+            $main.addClass('arene');
         },
         _makeGrid : function () {
             var that = this;
-            this.$grid = $('<table class="gameController">').appendTo($game);
+            this.grid = new psr.view.gameController.Grid();
+            this.grid.$grid.appendTo($game);
             that.on('cardFocus', function() {
-                that.$grid.addClass('gShow');
+                that.grid.$grid.addClass('gShow');
             });
             that.on('cardUnFocus', function() {
-                that.$grid.removeClass('gShow');
+                that.grid.$grid.removeClass('gShow');
             })
-            var $tr, $td;
-            for (var h = 0; h < this._gridHeight; h++) {
-                $tr = $('<tr>').appendTo(this.$grid);
-                for (var w = 0; w < this._gridWidth; w++) {
-                    $td = $('<td data-x="'+ h +'" data-y="'+ w +'">').appendTo($tr);
-                    if (h > (this._gridHeight / 2)) {
-                        $td.addClass('available')
-                    }
-                }
-            }
-            this.$grid
+            this.grid.$grid
                 .on('mouseover click', function(e) {
                     if (that.focusedCard) {
                         if (e.target.tagName == "TD") {
                             var $td = $(e.target);
                             if (e.type == "click") {
                                 // @todo : communiquer cette cordonnée au server
-                                console.log('larguage',$td.data('x'), $td.data('y'));
+                                console.log('larguage', $td.data('x'), $td.data('y'));
                                 that._dropCard(e);
                             } else {
                                 var cardInfo = that.focusedCard.cardInfo;
@@ -60,7 +46,16 @@
                                         height : cardInfo.hgt * $td.height(), // Hauteur de l'unité (en case)
                                         width : cardInfo.wgt * $td.width(),
                                     });
-                                that.$tpl.prependTo(that.$grid).offset($td.offset()).html($tplImg);
+                                var offset = $td.offset();
+                                if (cardInfo.hgt > 1) {
+                                    offset.top -= $td.height() * (cardInfo.hgt / 2);
+                                    if (cardInfo.hgt % 2 == 0) offset.top += ($td.height() / 2);
+                                }
+                                if (cardInfo.wgt > 1) {
+                                    offset.left -= $td.width() * (cardInfo.wgt / 2);
+                                    if (cardInfo.wgt % 2 == 0) offset.left += ($td.height() / 2);
+                                        }
+                                that.$tpl.prependTo(that.grid.$grid).offset(offset).html($tplImg);
                             }
                         } else {
                             console.log(e)
@@ -72,36 +67,41 @@
                 });
         },
         _dropCard : function(e) {
-            this.focusedCard.$card.parent().after(this.deck[4].$card.parent());
-            this.focusedCard.$card.parent().appendTo(this.$socle);
+            try {
+                this.socle.energy.removeEnergy(this.focusedCard.cardInfo.cst);
 
-            var cardIndex = this.deck.indexOf(this.focusedCard);
-            this.deck.push(this.deck.splice(cardIndex, 1)[0]);
-            // this.focusedCard.
-            this.$tpl.detach();
+                this.focusedCard.$card.parent().after(this.deck[4].$card.parent());
+                this.focusedCard.$card.parent().appendTo(this.socle.$socle);
 
-            this.focusedCard.$card.trigger('click');
-            this._showNextCard();
+                var cardIndex = this.deck.indexOf(this.focusedCard);
+                this.deck.push(this.deck.splice(cardIndex, 1)[0]);
+
+                this.$tpl.detach();
+
+                this.focusedCard.$card.trigger('click');
+                this._showNextCard();
+            } catch (e) {
+                Materialize.toast(e, 3000);
+            }
         },
         _makeSocle : function() {
-            var that = this;
-            var oCard;
             var $socleWrapper = $('<div id="socleWrapper">').appendTo($game);
-            this.$socle = $('<div class="row">').appendTo($socleWrapper);
-            this.$next = $('<div class="col s2 next">').appendTo(this.$socle);
-            this.$cards = $('<div class="col s10" id="socle">').appendTo(this.$socle);
-            this.$energy = $('<div class="energy"><div class="jauge"><img src="svg/lightning.svg" /></div></div>').appendTo($socleWrapper);
+            this.socle = new psr.view.gameController.Socle();
+            $socleWrapper.append(this.socle.$socle).append(this.socle.energy.$energy);
             for (var card in this.deck) {
                 this._createCard(card);
             }
             this._showNextCard();
+        },
+        _makeTimer: function() {
+            this.timer = new psr.view.gameController.Timer();
         },
         _createCard : function(card) {
             var that = this;
             var cardName = this.deck[card];
             var oCard = new psr.view.cards.Card(cardName);
             this.deck[card] = oCard;
-            this.$cards.append($('<div class="col s3">').append(oCard.$card));
+            this.socle.$cards.append($('<div class="col s3">').append(oCard.$card));
             oCard.$card
                 .on('click', function() {
                     if (that.focusedCard && that.focusedCard != oCard) {
@@ -119,7 +119,7 @@
             return this;
         },
         _showNextCard : function() {
-            this.$next.html(this.deck[4].$card.clone());
+            this.socle.$next.html(this.deck[4].$card.clone());
         },
         show : function() {
             $main.find('.view, .navbar').css('transform','scale(1,0)');
@@ -134,5 +134,5 @@
             this.$grid = null;
         }
     });
-    O2.mixin(psr.game.GameController, O876.Mixin.Events);
+    O2.mixin(psr.GameController, O876.Mixin.Events);
 })(jQuery,O2);

@@ -8,7 +8,7 @@
         var oCards = new psr.view.Cards();
         var oBattle = new psr.view.Battle();
         var oChat = new psr.view.Chat();
-        var oGame = new psr.game.Game();
+        var oGame = new psr.Game();
 
         oBattle
             .on('enterMatchmaking', function() {
