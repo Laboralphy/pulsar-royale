@@ -6,11 +6,11 @@ module.exports = function (grunt) {
             dist: {
                 files: [
                     {expand: true, cwd: 'client/css/', src: ['**'], dest: "www/client/css/"},
-                    {expand: true, cwd: 'client/font/', src: ['**'], dest: "www/client/font/"},
                     {expand: true, cwd: 'client/fonts/', src: ['**'], dest: "www/client/fonts/"},
                     {expand: true, cwd: 'client/img/', src: ['**'], dest: "www/client/img/"},
+                    {expand: true, cwd: 'client/librairies/', src: ['**'], dest: "www/client/librairies/"},
                     {expand: true, cwd: 'client/svg/', src: ['**'], dest: "www/client/svg/"},
-                    {expand: true, cwd: 'client/js/', src: ['*jquery*', 'material*', 'o2*'], dest: "www/client/js/"}
+                    {expand: true, cwd: 'client/', src: ['index.html'], dest: "www/client/"},
                 ]
             }
         },
@@ -55,9 +55,9 @@ module.exports = function (grunt) {
             },
             dev: {
                 src: [
-                    "client/js/psr/**"
+                    "client/js/psr/**",
                 ],
-                dest: 'client/js/psr.js'
+                dest: 'client/js/psr.js',
             }
         },
         // Uglify
@@ -99,18 +99,18 @@ module.exports = function (grunt) {
                 tasks: ['dev'],
                 options: {
                     interrupt: false,
-                    spawn: false,
+                    spawn: false
                 },
             },
             "dev-server": {
                 files: [
-                    "client/css/**",
+                    "client/css/**.css",
                     "client/js/psr/**"
                 ],
                 tasks: ['dev-server'],
                 options: {
                     interrupt: false,
-                    spawn: false,
+                    spawn: false
                 },
             }
         }
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dev-server',
         [
             'copy:dist',
-            'concat:dist'
+            'concat:dev'
         ]
     );
     // Monitor pour la dev
