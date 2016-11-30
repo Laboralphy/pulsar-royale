@@ -1,20 +1,19 @@
 O2.createClass("psr.Chat", {
 
-	oSocket: null,
-	oView: null,
-	
-	
-	initView: function(oView) {
-		this.oView = oView;
-	},
-	
-	initSocket: function(oSocket) {
-		this.oSocket = oSocket;
-		
+    oSocketManager: null,
+    oView: null,
 
-		oSocket.on('XXXXX', (function(data) {
-			this.oView.afficher_quelquechose();
-			// oSocket.emit('YYYY', {...});
-		}).bind(this));
-	},
+
+    initView: function (oView) {
+        this.oView = oView;
+    },
+
+    initSocket: function (oSocketManager) {
+        var sMsg = 'Bonjour';
+
+        this.oSocketManager = oSocketManager;
+        this.oSocketManager.send_message(sMsg);
+
+        this.oView.addBulle(this.oSocketManager.getUsername(), sMsg);
+    },
 });

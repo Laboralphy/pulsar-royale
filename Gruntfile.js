@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         copy: {
             dist: {
                 files: [
-                    {expand: true, cwd: 'client/css/', src: ['**'], dest: "www/client/css/"},
+                    {expand: true, cwd: 'client/css/', src: ['*.css'], dest: "www/client/css/"},
                     {expand: true, cwd: 'client/fonts/', src: ['**'], dest: "www/client/fonts/"},
                     {expand: true, cwd: 'client/img/', src: ['**'], dest: "www/client/img/"},
                     {expand: true, cwd: 'client/librairies/', src: ['**'], dest: "www/client/librairies/"},
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
             },
             'dev-server': {
                 files: [
-                    "client/css/**.css",
+                    // "client/css/**.css",
                     "client/js/psr/**"
                 ],
                 tasks: ['dev-server'],

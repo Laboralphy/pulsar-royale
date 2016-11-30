@@ -16,8 +16,6 @@
             // oChat.init();
 
             this._generateChat().appendTo(this.$content);
-            this.addBulle('Neo', 'Bonjour');
-            this.addBulle('Fred', 'Bonjour ^^');
 
         },
 

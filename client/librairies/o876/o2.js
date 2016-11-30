@@ -190,6 +190,9 @@ O2.extendClass = function(sName, pParent, pPrototype) {
  * @param pMixin mixin lui même
  */
 O2.mixin = function(pPrototype, pMixin) {
+	if (pPrototype === undefined) {
+		throw new Error('undefined prototype');
+	}
 	if (typeof pPrototype == 'string') {
 		pPrototype = O2.loadObject(pPrototype);
 	}
