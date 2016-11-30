@@ -47,6 +47,9 @@ body {
     margin: auto;
     border: 1px solid #1a237e;
 }
+#main.arene {
+    background-image: url("../img/background-arene.png");
+}
 #main .view {
     height : calc(99vh - 64px);
     position: relative;
@@ -60,14 +63,14 @@ body {
     top: 0px;
     width: 100%;
 }
-#game table {
+#game table.gameController {
     width: auto;
     margin: auto;
     margin-top : 10vh;
     position: relative;
 }
 
-#game table td {
+#game table.gameController td {
     width : calc(95vh / 30);
     height : calc(95vh / 44);
     /*border: 1px solid #000;*/
@@ -75,17 +78,17 @@ body {
     position: relative;
 }
 #game table.gShow td{
-    background: rgba(200, 80, 80, 0.3);
+    background: rgba(200, 80, 80, 0.25);
 }
 #game table.gShow tr:nth-child(even) td:nth-child(even), #game table.gShow tr:nth-child(odd) td:nth-child(odd) {
-    background : rgba(200, 102, 102, 0.3);
+    background : rgba(200, 102, 102, 0.5);
 }
 /** Available **/
 #game table.gShow td.available{
-    background: rgba(80, 200, 80, 0.3);
+    background: rgba(80, 200, 80, 0.25);
 }
 #game table.gShow tr:nth-child(even) td.available:nth-child(even), #game table.gShow tr:nth-child(odd) td.available:nth-child(odd) {
-    background : rgba(102, 200, 102, 0.3);
+    background : rgba(102, 200, 102, 0.5);
 }
 
 #game .tplCard {
@@ -101,18 +104,65 @@ body {
     height: 4vh;
     left : 16.6667%;
     right : 0;
-    padding: 3px;
+    padding: 5px 10px;
 }
 #game .energy .jauge {
     background: #000;
     border-radius: 5px;
     width: 100%;
     height: 100%;
+    position: relative;
+}
+#game .energy .jauge .lvl {
+    position: absolute;
+    background: #73f5fe;
+    box-shadow: 2px -2px 20px #223db7, 0px -2px 5px #223db7, 0px -2px 10px #223db7, 0px -2px 15px #223db7,  -2px -2px 20px #223db7;
+    border-radius: 5px;
+    height: 100%;
+}
+@keyframes full {
+    from { background: #73f5fe; }
+    to   { background: #FF5555; }
+}
+#game .energy .jauge .lvl.full {
+    animation-name: full;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
 }
 #game .energy img {
     height: 4.5vh;
     position: absolute;
     top: -3px;
+}
+#game .energy .val {
+    height: 4.5vh;
+    width: 4.5vh;
+    position: absolute;
+    top: -5px;
+    left: -0.1rem;
+    line-height: 4.5vh;
+    font-size: 3.5vh;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: -1px 0 #000, 0 3px #000, 1px 0 #000, 0 -1px #000;
+}
+#game .energy .grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+}
+#game .energy .grid td {
+    width: 10%;
+    height: 100%;
+    border-left: 1px solid #223db7;
+    padding: 0;
+}
+#game .energy .grid td:first-child {
+    border:none;
 }
 /****** Cards *********/
 .psrDeck {

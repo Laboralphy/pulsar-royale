@@ -1,14 +1,14 @@
 (function($, O2) {
     var $main = $('#main');
     var $game = $('#game');
-    O2.createClass("psr.game.Game", {
+    O2.createClass("psr.Game", {
         GameController : null,
 
         __construct : function() {
 
         },
         _createGameController : function(deck) {
-            this.GameController = new psr.game.GameController(deck);
+            this.GameController = new psr.GameController(deck);
         },
         enterMatchmaking : function(deck) {
             // @todo : randomisation du deck
