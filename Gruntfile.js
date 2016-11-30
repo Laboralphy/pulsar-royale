@@ -10,6 +10,7 @@ module.exports = function (grunt) {
                     {expand: true, cwd: 'client/img/', src: ['**'], dest: "www/client/img/"},
                     {expand: true, cwd: 'client/librairies/', src: ['**'], dest: "www/client/librairies/"},
                     {expand: true, cwd: 'client/svg/', src: ['**'], dest: "www/client/svg/"},
+                    {expand: true, cwd: 'client/', src: ['index.html'], dest: "www/client/"},
                 ]
             }
         },
