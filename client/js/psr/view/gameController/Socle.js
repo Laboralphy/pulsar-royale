@@ -12,7 +12,10 @@
             this.$next = $('<div class="col s2 next">').appendTo(this.$socle);
             this.$cards = $('<div class="col s10" id="socle">').appendTo(this.$socle);
 
-            this.energy = new psr.view.gameController.Energy();
+            this.oEnergy = new psr.view.gameController.Energy();
+        },
+        setTime : function(time) {
+            this.oEnergy.setTime(time);
         }
     });
     O2.mixin(psr.view.gameController.Socle, O876.Mixin.Events);

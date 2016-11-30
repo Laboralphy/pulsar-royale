@@ -21,28 +21,24 @@
             for (var i = 0; i < 10; i++) {
                 $('<td>').appendTo($tr);
             }
-            this.animate();
         },
-        animate : function() {
+        setTime : function(timestamp) {
             var that = this;
-            function animationFrame(timestamp) {
-                if (that.lastTs == null) that.lastTs = timestamp ;
-                if (that.percent < 100) {
-                    that.$lvl.removeClass('full');
-                    that.percent += (timestamp - that.lastTs) / (120 / that.speed);
-                    that.percent = Math.min(100,that.percent);
-                    that.$lvl.css('width',that.percent+'%');
-                    var val = Math.floor(that.percent / 10);
-                    if (that.value != Math.floor(that.percent / 10)) {
-                        that.setEnergy(val);
-                    }
-                } else {
-                    that.$lvl.addClass('full');
+            if (that.lastTs == null) that.lastTs = timestamp ;
+            if (that.percent < 100) {
+                that.$lvl.removeClass('full');
+                that.percent += (timestamp - that.lastTs) / (120 / that.speed);
+                that.percent = Math.min(100,that.percent);
+                that.$lvl.css('width',that.percent+'%');
+                var val = Math.floor(that.percent / 10);
+                if (that.value != Math.floor(that.percent / 10)) {
+                    that.setEnergy(val);
                 }
-                that.lastTs = timestamp;
-                requestAnimationFrame(animationFrame);
+            } else {
+                that.$lvl.addClass('full');
             }
-            requestAnimationFrame(animationFrame);
+            that.lastTs = timestamp;
+            return this;
         },
         removeEnergy: function(en) {
             if (this.value >= en) {

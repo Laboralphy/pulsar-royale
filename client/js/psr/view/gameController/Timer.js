@@ -1,20 +1,15 @@
-(function($, O2) {
+(function($, O2, moment) {
     O2.createClass("psr.view.gameController.Timer", {
-        startTime   : null,
-        time        : null,
 
+        $timer : null,
+        offset : 0,
         __construct : function() {
-            this.animate();
+            this.$timer = $('<div class="gameTimer">');
         },
-        animate : function() {
-            var that = this;
-            function animationFrame(timestamp) {
-                if (that.startTime == null) that.startTime = timestamp ;
-                that.time = timestamp - that.startTime;
-                requestAnimationFrame(animationFrame);
-            }
-            requestAnimationFrame(animationFrame);
-        },
+        setTime : function(time) {
+            var oMoment = moment.unix(180 - (time / 1000) + this.offset);
+            this.$timer.text(oMoment.format('mm:ss'));
+        }
     });
     O2.mixin(psr.view.gameController.Timer, O876.Mixin.Events);
-})(jQuery,O2);
+})(jQuery, O2, moment);
