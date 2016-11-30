@@ -98,18 +98,18 @@ module.exports = function (grunt) {
                 tasks: ['dev'],
                 options: {
                     interrupt: false,
-                    spawn: false,
+                    spawn: false
                 },
             },
             "dev-server": {
                 files: [
                     "client/css/**.css",
-                    "client/js/psr/**",
+                    "client/js/psr/**"
                 ],
                 tasks: ['dev-server'],
                 options: {
                     interrupt: false,
-                    spawn: false,
+                    spawn: false
                 },
             }
         }
