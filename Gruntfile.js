@@ -47,7 +47,7 @@ module.exports = function (grunt) {
             dist: {
                 // the files to concatenate
                 src: [
-                    // "client/js/psr/**/*Abstract.js",
+                    "client/js/psr/**/*Abstract.js",
                     "client/js/psr/**",
                 ],
                 // the location of the resulting JS file
@@ -104,8 +104,8 @@ module.exports = function (grunt) {
             },
             'dev-server': {
                 files: [
-                    "client/js/psr/**",
-                    "client/**.css"
+                    "client/css/**.css",
+                    "client/js/psr/**"
                 ],
                 tasks: ['dev-server'],
                 options: {
