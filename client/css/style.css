@@ -1,6 +1,13 @@
 /**********************
         Général
 ***********************/
+@font-face {
+    font-family: 'Material Icons';
+    font-style:  normal;
+    font-weight: 400;
+    src:         url(../fonts/materialicons.woff) format('woff');
+}
+
 body {
     background: #f1f1f1;
 }
@@ -382,24 +389,21 @@ a.material-design-hamburger__icon {
   }
 }
 .chat {
+}
+.chat-txt {
     position: relative;
-    height: calc(99vh - 64px);
+    height: calc(99vh - 180px);
 }
 .chat-bulle {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     background-color: black;
     color: white;
     border-radius: 0.4em;
     padding: 0.1em 1.2em;
 }
-.chat-txt {
-}
 .chat-input {
-    /*border-radius: 0.4em;*/
     color: white;
-    /*padding: 0.1em 1.2em;*/
     background-color: black;
-    position: absolute;
-    bottom: 0px;
-    /*width: calc(100% - 2.4em);*/
-    /*width: 100%;*/
+    position: relative;
 }

@@ -12,8 +12,8 @@
             this.tabTooltip = 'Chat';
             __inherited();
 
-            oChat = new chat();
-            oChat.init();
+            // oChat = new chat();
+            // oChat.init();
 
             this._generateChat().appendTo(this.$content);
             this.addBulle('Neo', 'Bonjour');
