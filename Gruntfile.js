@@ -47,17 +47,17 @@ module.exports = function (grunt) {
             dist: {
                 // the files to concatenate
                 src: [
-                    "client/js/psr/**/*Abstract.js",
-                    "client/js/psr/**"
+                    // "client/js/psr/**/*Abstract.js",
+                    "client/js/psr/**",
                 ],
                 // the location of the resulting JS file
-                dest: 'www/client/js/psr.min.js'
+                dest: 'www/client/js/psr.js',
             },
             dev: {
                 src: [
-                    "client/js/psr/**",
+                    "client/js/psr/**"
                 ],
-                dest: 'client/js/psr.js',
+                dest: 'client/js/psr.js'
             }
         },
         // Uglify
@@ -79,7 +79,7 @@ module.exports = function (grunt) {
         concurrent: {
             options: {
                 logConcurrentOutput: true,
-                limit: 10,
+                limit: 10
             },
             monitor: {
                 tasks: ["watch:dev"]
@@ -102,10 +102,10 @@ module.exports = function (grunt) {
                     spawn: false
                 },
             },
-            "dev-server": {
+            'dev-server': {
                 files: [
-                    "client/css/**.css",
-                    "client/js/psr/**"
+                    "client/js/psr/**",
+                    "client/**.css"
                 ],
                 tasks: ['dev-server'],
                 options: {
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dev-server',
         [
             'copy:dist',
-            'concat:dev'
+            'concat:dist'
         ]
     );
     // Monitor pour la dev
