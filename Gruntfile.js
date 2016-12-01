@@ -104,7 +104,7 @@ module.exports = function (grunt) {
             },
             'dev-server': {
                 files: [
-                    // "client/css/**.css",
+                    "client/css/**.css",
                     "client/js/psr/**"
                 ],
                 tasks: ['dev-server'],

@@ -4,8 +4,16 @@
 (function ($, O2) {
     $(function () {
 
+        var $input = $('<input id="pseudo" type="text" class="pr-pseudo" autocomplete="off"/>');
+        var $inputField = $('<div class="input-field col s6 offset-s3 valign"><label for="pseudo">Pseudo</label></div>').append($input);
+        var $btn = $('<a class="pr-login waves-effect waves-light btn col s6 offset-s3"><i class="material-icons right">&#xE163;</i>Démarrer</a>');
+        var $prTop = $('<div class="pr-top row"><div>').append($inputField, $btn);
+        var $body = $('body');
+
+        $body.append($prTop);
+
+
         var oSocketManager = new psr.SocketManager();
-        oSocketManager.connect();
 
         var $view = $(".view", "#main");
         var oShop = new psr.view.Shop();
@@ -18,8 +26,24 @@
          * ****************** */
         var oChatView = new psr.view.Chat();
         var oChat = new psr.Chat();
-        oChat.initView(oChatView);
-        oChat.initSocket(oSocketManager);
+
+        $btn.on('click', function () {
+            var $pseudo = $input.val();
+            if (oSocketManager.connect($pseudo) === true) {
+                oChat.initView(oChatView);
+                oChat.initSocket(oSocketManager);
+                $prTop.addClass('pr-hidden');
+            }
+        });
+
+        $input.on('keydown', function (oEvent){
+            switch (oEvent.which) {
+                case 13:
+                    $btn.trigger('click');
+                    oEvent.target.value = '';
+                    break;
+            }
+        });
 
         oBattle
             .on('enterMatchmaking', function () {

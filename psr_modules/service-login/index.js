@@ -86,7 +86,7 @@ function service(oSocket) {
 			var sPass = 'p' in xData ? xData.p : '';
 			var oAuth = getUserAuth(sUserName, sPass);
 			wsh.setSocketId(oSocket, oAuth.id);
-			wsh.send([oSocket], 'HI', {u: oAuth.name});
+			wsh.send([oSocket], 'HI', {u: oAuth.name, id: oAuth.id});
 			oEmitter.emit('auth', oAuth);
 		} catch (e) {
 			errorLog(e);

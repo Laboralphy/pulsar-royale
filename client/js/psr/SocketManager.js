@@ -1,7 +1,8 @@
 O2.createClass('psr.SocketManager', {
 
     oSocket: null,
-    sUserName: 'neo',
+    sUserName: null,
+    sChannel: 'general',
 
     /**
      * Toutes les methode commencant par "net_" doivent correspondre
@@ -18,20 +19,28 @@ O2.createClass('psr.SocketManager', {
         }
     },
 
-    _send: function(sMessage, xData) {
+    _send: function (sMessage, xData) {
+        console.log('envoi msg', sMessage,xData );
         this.oSocket.emit(sMessage, xData);
     },
 
     /**
      * Connextion au serveur
      */
-    connect: function () {
+    connect: function (sUserName) {
+        if (sUserName == '') {
+            console.error('Pseudo vide !');
+            return false;
+        } else {
+            this.sUserName = sUserName;
 
-        var wsc = new WSC.SocketConnector();
-        wsc.connect();
+            var wsc = new WSC.SocketConnector();
+            wsc.connect();
 
-        this.oSocket = wsc.getSocket();
-        this._registerNetworkHandlers();
+            this.oSocket = wsc.getSocket();
+            this._registerNetworkHandlers();
+            return true;
+        }
     },
 
     /**
@@ -43,7 +52,7 @@ O2.createClass('psr.SocketManager', {
         return this.oSocket;
     },
 
-    getUsername:  function () {
+    getUsername: function () {
         return this.sUserName;
     },
 
@@ -55,8 +64,8 @@ O2.createClass('psr.SocketManager', {
         this._send('LOGIN', {u: sUserName});
     },
 
-    send_message: function (xMessage) {
-        this._send('T_SAY', xMessage);
+    send_message: function (sMessage) {
+        this._send('T_SAY', {m: sMessage, c: this.sChannel});
     },
 
 
@@ -68,24 +77,24 @@ O2.createClass('psr.SocketManager', {
         this.sUserName = data.u;
         this.nUserID = data.id;
         console.log('Connexion :', this.sUserName, this.nUserID);
+        // this.send_message('Connexion !!!');
     },
 
     net_DN: function (data) {
-        console.error('Erreur et déconnexion', data.e);
+        console.error('Impossible de se connecter', data.e);
     },
 
     net_connect: function (socket) {
-        console.log('Connexion au serveur !');
-       this.send_login(this.sUserName);
+        console.log('Connexion au serveur... [ Ok ]');
+        this.send_login(this.sUserName);
     },
 
     net_disconnect: function (socket) {
-        console.warn('Déconnexion du serveur !');
-    },
-
-    net_T_CM: function (data) {
-        console.log(data);
+        console.warn('Déconnexion du serveur...[ Ok ]');
     },
 
 
 });
+
+O2.mixin(psr.SocketManager, O876.Mixin.Events);
+O2.mixin(psr.SocketManager, O876.Mixin.Data);
