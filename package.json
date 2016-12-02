@@ -1,17 +1,14 @@
 {
-  "name": "web-pv",
+  "name": "Pulsar-Royale",
   "version": "1.0.0",
-  "description": "Web-PV LrP4",
+  "description": "Pulsar-Royale",
   "main": "index.html",
   "scripts": {
     "test": "grunt tests --verbose"
   },
   "repository": {
     "type": "git",
-    "url": "http://10.227.147.187:8084/gitlab/LRP4/web-pv.git"
-  },
-  "dependencies": {
-    "socket.io" : "^1.4.8"
+    "url": "https://github.com/Laboralphy/pulsar-royale.git"
   },
   "devDependencies": {
     "autoprefixer": "^6.1.0",
@@ -41,11 +38,11 @@
     "phantomjs": "^1.9.18"
   },
   "keywords": [
-    "LrP4",
-    "Web-PV",
-    "Main",
-    "courante"
+    "Pulsar",
+    "Royale",
+    "Cartes",
+    "Desck"
   ],
-  "author": "fln.slr",
+  "author": "Team Puls@r",
   "license": "MIT"
 }

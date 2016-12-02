@@ -23,12 +23,17 @@ module.exports = function(grunt) {
                 ],
                 options: {
                     vendor: [
+                        'client/js/o876/o2.js',
+                        'client/js/o876/Mixin/Events.js',
+                        'client/js/moment.js',
+
                         'client/js/jquery.js',
                         'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
                         'client/js/materialize.min.js',
                         'client/js/materializer.js',
+                        'client/js/perfect-scrollbar.jquery.min.js'
                     ],
-                    specs: 'tests/spec/**/*Spec.js',
+                    specs: 'tests/client/**/*Spec.js',
                     styles: [
                         'client/css/materialize.min.css',
                         'client/css/style.css'
@@ -92,7 +97,7 @@ module.exports = function(grunt) {
                     "client/js/psr/**",
                     "tests/client/**"
                 ],
-                tasks: ['dev'],
+                tasks: ['dev', 'tests'],
                 options: {
                     interrupt: false,
                     spawn: false,

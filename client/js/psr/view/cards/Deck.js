@@ -2,13 +2,36 @@
  * Created by florian.saleur on 18/11/16.
  */
 (function ($, O2) {
+    /**
+     * Les decks
+     * @type {Array}
+     */
     var decks = [];
+    /**
+     * Classe de gestion d'un deck
+     */
     O2.createClass("psr.view.cards.Deck", {
+        /**
+         * Liste des cartes du deck
+         * @type: {Array}
+         */
         deck : null,
 
+        /**
+         * Onglet du deck
+         * @type: jQuery
+         */
         $tab : null,
+        /**
+         * Contenu de l'onglet du deck
+         * @type: jQuery
+         */
         $tabContent : null,
 
+        /**
+         * Carte actuellement drag
+         * @type: {psr.view.cards.Card}
+         */
         draggedCard : null,
 
         __construct: function (deck) {
@@ -18,10 +41,19 @@
             this.makeTab();
             this.makeTabContent();
         },
+        /**
+         * Génère l'onglet
+         * @returns {psr.view.cards.Deck}
+         */
         makeTab: function() {
             this.$tab = $('<li class="tab col s3"><a href="#deck'+ this.deckId +'" data-deckid="'+ this.deckId +'">'+ this.deckId +'</a></li>');
             return this;
         },
+        /**
+         * Génère le contenu de l'onglet
+         * Ajoute des events pour les dropZones
+         * @returns {psr.view.cards.Deck}
+         */
         makeTabContent: function() {
             var that = this;
             this.$tabContent = $('<div id="deck'+ this.deckId +'" class="row psrDeck">');
@@ -63,12 +95,6 @@
                     });
             }
             return this;
-        },
-        validate : function() {
-            // @todo : vérification coté serveur
-            if (this.deck.length != 8) {
-                throw "Il n'y a pas assez de cartes dans ce deck";
-            }
         }
     });
     O2.mixin(psr.view.cards.Deck, O876.Mixin.Events);

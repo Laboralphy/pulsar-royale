@@ -14,7 +14,8 @@
             .on('enterMatchmaking', function() {
                 var deck = oCards.getCurDeck();
                 try {
-                    deck.validate();
+                    //@todo : validation du deck avant lancement
+                    //oSocket.enterMatchmaking(deck.deck);
                     oGame.enterMatchmaking(deck.deck);
                 } catch (e) {
                     console.log(e);

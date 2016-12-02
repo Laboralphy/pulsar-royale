@@ -2,16 +2,18 @@
     var $main = $('#main');
     var $game = $('#game');
     O2.createClass("psr.Game", {
+        oSocket : null,
+
         oGameUI  : null,
         oTimeKeeper      : null,
 
         deck : null,
 
-        _createGameController : function() {
-            this.oGameUI = new psr.view.GameUI(this.deck);
+        __construct : function(oSocket) {
+            this.oSocket = oSocket;
         },
         enterMatchmaking : function(deck) {
-            // @todo : randomisation du deck
+            // @todo : randomisation du deck par le serveur
             // @todo : enter matchmaking coté serveur
             this.deck = deck;
             this.gameStart();
@@ -22,6 +24,7 @@
         },
         gameStart : function() {
             var that = this;
+            // Gestion du temps
             this.oTimeKeeper = new psr.TimeKeeper();
             this.oTimeKeeper
                 .on("nextFrame", function(data) {
@@ -38,10 +41,19 @@
                 .one("timeIsUp", function() {
                     that.gameEnd();
                 });
-            this._createGameController();
+            // Gestion du controle du jeu
+            this.oGameUI = new psr.view.GameUI(this.deck);
+            this.oGameUI
+                .on('dropCard', function(dropInfo) {
+                    console.log('oSocket.emit', dropInfo);
+                });
+
+            // this.oSocket
+            //     .on('droppedCard', function(dropInfo) {
+            //         this.oGameUI.drop(dropInfo);
+            //     });
         },
         gameEnd : function() {
-
             // @todo : affichage de l'écran des scores
             this.oGameUI.destroy();
         }
