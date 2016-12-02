@@ -478,6 +478,10 @@ a.material-design-hamburger__icon {
     position: relative;
 }
 
+
+/* *********************** *
+ * Formulaire de connexion *
+ * *********************** */
 .pr-top {
     position: fixed;
     top: 0;
@@ -485,8 +489,21 @@ a.material-design-hamburger__icon {
     width: 100%;
     height: 100%;
     z-index: 999;
-    background: rgba(200,200,200,0.8);
+    background: white;
 }
+.pr-top form {
+    border: solid 1px black;
+    width: 25em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25vh;
+    border-radius: 10px;
+    box-shadow: 5px 5px 30px;
+}
+
+/* *************************** *
+ * Permet de cacher un élément *
+ * *************************** */
 .pr-hidden {
     display: none;
 }
