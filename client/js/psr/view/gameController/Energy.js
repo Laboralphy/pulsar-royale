@@ -41,13 +41,9 @@
             return this;
         },
         removeEnergy: function(en) {
-            if (this.value >= en) {
-                var val = this.value - en;
-                this.percent -= en * 10;
-                this.setEnergy(val);
-            } else {
-                throw "Pas assez d'énergie...";
-            }
+            var val = this.value - en;
+            this.percent -= en * 10;
+            this.setEnergy(val);
             return this;
         },
         setEnergy : function(en) {

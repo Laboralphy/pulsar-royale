@@ -1,14 +1,27 @@
-/**
- * Created by florian.saleur on 18/11/16.
- */
 (function($, O2) {
+    /**
+     * Elément de vue pour une carte de jeu
+     */
     O2.createClass("psr.view.cards.Card", {
+        /**
+         * Le rendu de la carte
+         * @type: jQuery
+         */
         $card : null,
+
+        /**
+         * Valeurs par défaut d'une carte inconnue
+         * @type: Object
+         */
         _defaultCard : {
             rrt : '?',
             lbl : '???',
             crd : 'img/nope.png'
         },
+        /**
+         * Description des propriétés d'une carte
+         * @type: Object
+         */
         _description : {
             "hp" : {
                 "label" : "Points de vie"
@@ -33,12 +46,20 @@
                 "label" : "Vitesse de déplacement"
             }
         },
+        /**
+         * Infos de la carte
+         * @type: Object
+         */
         cardInfo : null,
         __construct : function(cardId) {
             this.cardInfo = psr.config.cards[cardId] || this._defaultCard;
             this.cardInfo.cardName = cardId || null;
             this.initCard();
         },
+        /**
+         * Initialise la carte avec la configuration fournie par cardInfo
+         * @returns {psr.view.cards.Card}
+         */
         initCard : function() {
             this.$card = $('<div class="psrCard '+ this.cardInfo['rrt'] +'" draggable="true" data-tooltip="'+ this.cardInfo['lbl'] +'"><img draggable="false" src="'+ this.cardInfo['crd'] +'" width="100%"></div>');
             var $cardCoast = $('<div class="coast" data-coast="'+ this.cardInfo['cst'] +'" ><img src="svg/lightning.svg" /></div>')
@@ -46,6 +67,10 @@
             $('[data-tooltip]', this.$card).tooltip();
             return this;
         },
+        /**
+         * Génère une modal de description de la carte
+         * @returns {psr.view.cards.Card}
+         */
         showDescription : function() {
             var that = this;
             var $content = $('<div class="row psrCardInfo">');
@@ -74,6 +99,7 @@
                 "header" : that.cardInfo.lbl,
                 "content" : $content
             });
+            return this;
         }
     });
 })(jQuery,O2);
