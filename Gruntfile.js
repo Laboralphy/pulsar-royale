@@ -1,22 +1,22 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-     // Configuration de Grunt
+    // Configuration de Grunt
     grunt.initConfig({
-        copy : {
-            dist : {
-                files : [
-                    {expand:true, cwd: 'client/css/', src: ['**'], dest : "www/client/css/"},
-                    {expand:true, cwd: 'client/font/', src: ['**'], dest : "www/client/font/"},
-                    {expand:true, cwd: 'client/fonts/', src: ['**'], dest : "www/client/fonts/"},
-                    {expand:true, cwd: 'client/img/', src: ['**'], dest : "www/client/img/"},
-                    {expand:true, cwd: 'client/svg/', src: ['**'], dest : "www/client/svg/"},
-                    {expand:true, cwd: 'client/js/', src: ['*jquery*','material*','o2*'], dest : "www/client/js/"}
+        copy: {
+            dist: {
+                files: [
+                    {expand: true, cwd: 'client/css/', src: ['*.css'], dest: "www/client/css/"},
+                    {expand: true, cwd: 'client/fonts/', src: ['**'], dest: "www/client/fonts/"},
+                    {expand: true, cwd: 'client/img/', src: ['**'], dest: "www/client/img/"},
+                    {expand: true, cwd: 'client/librairies/', src: ['**'], dest: "www/client/librairies/"},
+                    {expand: true, cwd: 'client/svg/', src: ['**'], dest: "www/client/svg/"},
+                    {expand: true, cwd: 'client/', src: ['index.html'], dest: "www/client/"},
                 ]
             }
         },
 
-         // Jasmine
-        jasmine : {
+        // Jasmine
+        jasmine: {
             components: {
                 src: [
                     "client/js/psr/**",
@@ -34,12 +34,12 @@ module.exports = function(grunt) {
                         'client/css/style.css'
                     ],
                     helpers: 'tests/spec/helper.js',
-                    keepRunner : true
+                    keepRunner: true
                 }
             }
         },
 
-         // Concat
+        // Concat
         concat: {
             options: {
                 separator: ';'
@@ -47,14 +47,15 @@ module.exports = function(grunt) {
             dist: {
                 // the files to concatenate
                 src: [
+                    "client/js/psr/**/*Abstract.js",
                     "client/js/psr/**",
                 ],
                 // the location of the resulting JS file
-                dest: 'www/client/js/psr.min.js'
+                dest: 'www/client/js/psr.js',
             },
             dev: {
                 src: [
-                    "client/js/psr/**",
+                    "client/js/psr/**"
                 ],
                 dest: 'client/js/psr.js'
             }
@@ -78,16 +79,19 @@ module.exports = function(grunt) {
         concurrent: {
             options: {
                 logConcurrentOutput: true,
-                limit: 10,
+                limit: 10
             },
             monitor: {
                 tasks: ["watch:dev"]
+            },
+            "monitor-server": {
+                tasks: ["watch:dev-server"]
             }
         },
 
-         // Watch Files
+        // Watch Files
         watch: {
-            dev : {
+            dev: {
                 files: [
                     "client/js/psr/**",
                     "tests/client/**"
@@ -95,7 +99,18 @@ module.exports = function(grunt) {
                 tasks: ['dev'],
                 options: {
                     interrupt: false,
-                    spawn: false,
+                    spawn: false
+                },
+            },
+            'dev-server': {
+                files: [
+                    "client/css/**.css",
+                    "client/js/psr/**"
+                ],
+                tasks: ['dev-server'],
+                options: {
+                    interrupt: false,
+                    spawn: false
                 },
             }
         }
@@ -119,8 +134,15 @@ module.exports = function(grunt) {
     );
     // Concat la dev
     grunt.registerTask('dev', ['concat:dev']);
+    grunt.registerTask('dev-server',
+        [
+            'copy:dist',
+            'concat:dist'
+        ]
+    );
     // Monitor pour la dev
     grunt.registerTask('monitor', ["concurrent:monitor"]);
     grunt.registerTask('tests', ['jasmine']);
+    grunt.registerTask('monitor-server', ["concurrent:monitor-server"]);
 
 }

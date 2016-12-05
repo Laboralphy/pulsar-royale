@@ -10,83 +10,91 @@
     <title>Pulsar Royale</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/materialize.min.css" rel="stylesheet">
-    <link href="css/material-icon.css" rel="stylesheet">
-    <link href="css/perfect-scrollbar.min.css" rel="stylesheet">
-
+    <link href="librairies/materialize/css/materialize.css" rel="stylesheet">
+    <link href="librairies/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="js/perfect-scrollbar.jquery.min.js"></script>
 
 </head>
 <body>
-    <div id="main" class="">
-        <div class="view"></div>
-        <div class="navbar">
-            <nav class="black" role="navigation">
-                    <div class="container-fluid">
-                            <ul class="init-tabs"></ul>
-                    </div>
-            </nav>
-        </div>
-        <div id="game"></div>
+<div id="main" class="">
+    <div class="view"></div>
+    <div class="navbar">
+        <nav class="black" role="navigation">
+            <div class="container-fluid">
+                <ul class="init-tabs"></ul>
+            </div>
+        </nav>
     </div>
+    <div id="game"></div>
+</div>
 
-    <div id="AjaxInProgress">
-        <div class="lean-overlay"></div>
-        <div class="valign-wrapper card-panel blue-grey lighten-5">
-            <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-blue">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
+<div id="AjaxInProgress">
+    <div class="lean-overlay"></div>
+    <div class="valign-wrapper card-panel blue-grey lighten-5">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
                     <div class="circle"></div>
                 </div>
-                </div>
-
-                <div class="spinner-layer spinner-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
+                <div class="gap-patch">
                     <div class="circle"></div>
                 </div>
-                </div>
-
-                <div class="spinner-layer spinner-yellow">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
+                <div class="circle-clipper right">
                     <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
-                </div>
-
-                <div class="spinner-layer spinner-green">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
                 </div>
             </div>
-            <h5 class="valign">Chargement...</h5>
+
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
         </div>
+        <h5 class="valign">Chargement...</h5>
     </div>
-	<script src="js/o876/o2.js"></script>
-    <script src="js/o876/Mixin/Events.js"></script>
-    <script src="js/moment.js"></script>
+</div>
 
-	<script src="js/jquery.js"></script>
-	<script src="js/materialize.min.js"></script>
-	<script src="js/materializer.js"></script>
-	<script src="js/perfect-scrollbar.jquery.min.js"></script>
+<script src="librairies/jQuery/jquery.js"></script>
+<script src="librairies/materialize/js/materialize.js"></script>
+<script src="librairies/materializer/materializer.js"></script>
+<script src="librairies/perfect-scrollbar/perfect-scrollbar.jquery.min.js"></script>
 
-    <script src="js/psr.js"></script>
+<script src="librairies/o876/o2.js"></script>
+<script src="librairies/o876/Mixin/Events.js"></script>
+<script src="librairies/o876/Mixin/Data.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="librairies/socket/SocketConnector.js"></script>
+
+<script src="js/psr.js"></script>
 </body>
 </html>
